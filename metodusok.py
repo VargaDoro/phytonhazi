@@ -89,8 +89,112 @@ def ot():
     print(f"A téglalap kerülete: {kerulet:.2f} a területe: {terulet:.2f}")
 
 
-'''6.	Írj metódust, amelyben 13 véletlen egész számot generálunk [-5;12) intervallumban. A metódus térjen vissza a listával,
+'''6/a Írj metódust, amelyben 13 véletlen egész számot generálunk [-5;12) intervallumban. A metódus térjen vissza a listával,
 a következő függvények esetén ezzel a listával dolgozz tovább. Az eredmény kiírása mindig a main.py-ban történjen!
 Hány pozitív és hány negatív szám van? '''
 
 def hat():
+    lista=[]
+    for i in range(0, 13, 1):
+        szam:int=int(random.random()*17)-5
+        lista.append(szam)
+    return lista
+
+def hat_pozitiv(lista):
+    i:int=0
+    db:int=0
+    while(i<len(lista)):
+        if(lista[i]>0):
+            db+=1
+        i+=1
+    return db
+
+def hat_negativ(lista):
+    i:int=0
+    db:int=0
+    while(i<len(lista)):
+        if(lista[i]<0):
+            db+=1
+        i+=1
+    return db
+
+
+'''6/b Mennyi a páros számok összege? 
+A páros, vagy a páratlan számok összege a nagyobb? 
+Mennyi a számok átlaga? 
+Mekkora a legnagyobb szám?'''
+
+def hat_paros_ossz(lista):
+    i:int=0
+    ossz:int=0
+    while(i<len(lista)):
+        if(lista[i]%2==0):
+            ossz+=lista[i]
+        i+=1
+    return ossz
+
+def hat_paratlan_ossz(lista):
+    i:int=0
+    ossz1:int=0
+    while(i<len(lista)):
+        if(lista[i]%2!=0):
+            ossz1+=lista[i]
+        i+=1
+    return ossz1
+
+def hat_atlag(lista):
+    atlag = sum(lista) / len(lista)
+    return atlag
+
+def hat_legnagyobb(lista):
+    legnagyobb=max(lista)
+    return legnagyobb
+
+
+'''7. Írj metódust, mely neveket kér a felhasználótól addig amíg a „@” jelet nem kapja. 
+Hány nevet adott meg a felhasználó? 
+Van-e benne A betűvel kezdődő név? 
+Melyik a leghosszabb név? '''
+
+def het():
+    i = input("Adj megy egy nevet (@-jelet kilépéshez): ")
+    tarolas = []
+    while i != "@":
+        tarolas.append(i)
+        i = input("Adj meg egy szót (@-jelet kilépéshez): ")
+    return tarolas
+
+def het_mennyi(tarolas):
+    nevek_szama=len(tarolas)
+    return nevek_szama
+
+def het_a(tarolas):
+    for nev in tarolas:
+        if nev.startswith('A') or nev.startswith('a'):
+            a_betu=("Van benne 'A' betűvel kezdődő név")  
+        else:
+            a_betu=("Nincs benne 'A' betűvel kezdődő név")
+    return a_betu
+
+def het_leghosszabb(tarolas):
+    leghosszabb=max(tarolas)
+    return leghosszabb
+
+
+'''8.	Írj metódust, mely egy érmedobás eredményét kéri be a felhasználótól 10-szer egymás után!
+A felhasználó minden lépésben a „f” vagy  „i” betűket kell megadjon. Addig kérd be a jeleket, amíg jó jelet nem ad meg. 
+Hányszor adott meg „f” betűt? 
+Mekkora a leghosszabb f sorozat?'''
+
+def nyolc():
+    tarolas=[]
+    
+    dobas:str=str(input("Add meg az érmedobás eredményét (csak 'i' vagy 'f'-et): "))
+    if dobas!="i" or dobas!="f":
+        print("Helytelen jelet adott meg!")
+
+    else:
+        for i in range(10):
+            dobas:str=str(input("Add meg az érmedobás eredményét (csak 'i' vagy 'f'-et): "))
+            tarolas.append(dobas)
+    return tarolas
