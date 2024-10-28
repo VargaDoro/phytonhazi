@@ -177,7 +177,7 @@ def het_a(tarolas):
     return a_betu
 
 def het_leghosszabb(tarolas):
-    leghosszabb=max(tarolas)
+    leghosszabb=max(tarolas, key=len)
     return leghosszabb
 
 

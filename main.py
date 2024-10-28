@@ -1,6 +1,6 @@
 import metodusok
 
-'''metodusok.elso()
+metodusok.elso()
 metodusok.masodik(6)
 metodusok.harom("hétfő", "hittan")
 metodusok.negy()
@@ -58,5 +58,5 @@ metodusok.tiz(5678)
 metodusok.tizenegy(123)
 metodusok.tizenketto()
 metodusok.tizenharom()
-metodusok.tizennegy(8, 6)'''
+metodusok.tizennegy(8, 6)
 metodusok.tizenot("k")
