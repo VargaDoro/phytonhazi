@@ -23,9 +23,9 @@ def elso():
 def masodik(ora):
     if(ora>9):
         print("Ez már tényleg túlzás.")
-    if(ora==0):
+    elif(ora==0):
          print("Be se jövök!")
-    if(ora==1):
+    elif(ora==1):
         print("Még 90% on vagyunk!")
     elif(ora in [2, 3]):
         print("Még bírjuk (60%)")
@@ -187,14 +187,152 @@ Hányszor adott meg „f” betűt?
 Mekkora a leghosszabb f sorozat?'''
 
 def nyolc():
-    tarolas=[]
-    
-    dobas:str=str(input("Add meg az érmedobás eredményét (csak 'i' vagy 'f'-et): "))
-    if dobas!="i" or dobas!="f":
-        print("Helytelen jelet adott meg!")
-
-    else:
-        for i in range(10):
-            dobas:str=str(input("Add meg az érmedobás eredményét (csak 'i' vagy 'f'-et): "))
+    tarolas = []
+    while(len(tarolas)<10):
+        dobas = input("Add meg az érmedobás eredményét (csak 'i' vagy 'f'-et): ")
+        if dobas == "i" or dobas == "f":
             tarolas.append(dobas)
+        else:
+            print("Helytelen jelet adott meg!")
     return tarolas
+
+def nyolc_f(tarolas):
+    i:int=0
+    db:int=0
+    while(i<len(tarolas)):
+        if tarolas[i]=="f":
+            db+=1
+        i+=1
+    return db
+
+def nyolc_leghosszabb(tarolas):
+    leghosszabb_f:int=0
+    i:int=0
+    for dobas in tarolas:
+        if dobas=="f":
+            i += 1
+            leghosszabb_f=max(leghosszabb_f, i)
+        else:
+            i=0
+    return leghosszabb_f
+
+
+'''9.	Írj programot, ami kiírja a 10x10-es alapú szorzótáblát! 10-esével egymás alá! használj hozzá formázott kiiratást!'''
+
+def kilenc():
+    i:int = 1
+    while(i<=10):
+        n:int = 1
+        while(n <= 10):
+            print(f"{i * n:>3}", end=' ')
+            n += 1
+        print()
+        i += 1
+
+
+'''10.	Írj metódust, mely a paraméterében kapott számról megmondja, hogy hány 1-es, 10-es, 100 - as, 1000 - es, stb van benne!
+ használd hozzá az egész osztás operátorát - // ! pl: 123//10 =12  123%10=3'''
+
+def tiz(szam:int):
+    egyesek = szam % 10
+    tizesek = (szam // 10) % 10
+    szazak = (szam // 100) % 10
+    ezer = (szam // 1000) % 10
+    print(f"A(z) {szam} szám jellemzői:")
+    print(f"1-esek: {egyesek}")
+    print(f"10-esek: {tizesek}")
+    print(f"100-asok: {szazak}")
+    print(f"1000-esek: {ezer}")
+
+
+'''11.	+++ Írj eljárást, mely paraméterében kap egy számot, majd összeadja a számjegyeket és kiírja a számjegyek összegét a képernyőre. 
+PL. 324 -> „324 számjegyeinek összege: 9”'''
+
+def tizenegy(szam:int):
+    szam_str = str(szam)
+    osszeg = 0
+    for i in range(len(szam_str)):
+        osszeg+=int(szam_str[i])
+    print(f"A {szam} számjegyeinek összege: {osszeg}")
+
+
+'''12.	++ Írj programot, mely beolvas egy pozitív egész számot, és megmondja, hogy tökéletes szám-e! (A tökéletes számok azok,
+melyek osztóinak összege egyenlő a szám kétszeresével. Ilyen szám pl. a 6, mert 2*6 = 1 + 2 + 3 + 6.)'''
+
+def tizenketto():
+    szam:int=int(input("Adj meg egy pozitív számot: "))
+    oszto:int = 1
+    osszeg:int = 0
+    while(oszto<szam): 
+        if szam%oszto==0:
+            osszeg+=oszto
+        oszto+=1
+    if osszeg==szam:
+        print("A szám tökéletes")
+    else:
+        print("A szám nem tökéletes")
+
+
+'''13.	++ Írj metódust, ami paraméterében kap két számot, és kiírja a két szám legnagyobb közös osztóját!
+Segítség::: A kisebbik számtól visszafelé nézzük, hogy van-e közös osztó. Nincs, ha az egyet elértük.'''
+
+def legnagyobb_kozos_oszto(a, b):
+    while b:
+        a, b = b, a % b
+    return a
+def tizenharom():
+    szam1:int = int(input("Adj meg egy számot: "))
+    szam2:int = int(input("Adj meg egy kisebb számot: "))
+    lko = legnagyobb_kozos_oszto(szam1, szam2)
+    print(f"A {szam1} és {szam2} legnagyobb közös osztója: {lko}")
+
+
+'''1. ++Írj metódust, ami paraméterében kap két számot, és kiírja a legkisebb közös többszörösüket! Segítség: 
+Indulj a nagyobb számtól egyesével és keresd meg azt a számot, amelyet mindkettő oszt! Meddig kell mennie a ciklusnak? '''
+
+def legkisebb_kozos_tobbszoros(a, b):
+    nagyobb = max(a, b)
+    while True:
+        if nagyobb % a == 0 and nagyobb % b == 0:
+            return nagyobb
+        nagyobb += 1
+def tizennegy(szam1:int, szam2:int):
+    lkt = legkisebb_kozos_tobbszoros(szam1, szam2)
+    print(f"A {szam1} és {szam2} legkisebb közös többszörösük: {lkt}")
+
+
+'''1.feladat:	Egy a természettel  Vadászati és Természeti Világkiállításon téged bíztak meg, hogy egy kihelyezett információs
+tábla részműködését leprogramozd! 
+A felhasználónak be kell gépelnie melyik szektort szeretné megnézni, a te programod pedig kiírja az ott található kiállítás nevét.
+•	A esetén Nemzetközi Csarnok, World Conservation Forum 2021
+•	B és E esetén a Kereskedelmi Csarnok felirat jelenjen meg
+•	C esetén Konferencia-központ Innovációs Showroom
+•	D esetén Hal, Víz és Ember
+•	F esetén Hagyományos Vadászati Módok Csarnoka
+•	G Hazai és nemzetközi Trófeakiállítás, 12. Nyílt Európai Taxiderma-bajnokság, Vadászat 21.században kiállítás
+•	H esetben Központi Magyar Kiállítás
+•	Minden egyéb nem szám adatra írja ki, hogy forduljon a pénztárhoz.
+Pl1: 
+Be: Szektor: D
+Ki: Hal, Víz és Ember
+Pl2:
+Be: Szektor: 4
+Ki: HIBA: Adjon meg egy betűt A-H-ig!'''
+
+def tizenot(szektor):
+    if szektor == "A":
+        print("Nemzetközi Csarnok, World Conservation Forum 2021")
+    elif szektor == "B" or szektor=="E":
+        print("Kereskedelmi Csarnok")
+    elif szektor=="C":
+        print("Konferencia-központ Innovációs Showroom")
+    elif szektor=="D":
+        print("Hal, Víz és Ember")
+    elif szektor == "F":
+        print("Hagyományos Vadászati Módok Csarnoka")
+    elif szektor=="G":
+        print("Hazai és nemzetközi Trófeakiállítás, 12. Nyílt Európai Taxiderma-bajnokság, Vadászat 21.században kiállítás")
+    elif szektor=="H":
+        print("Központi Magyar Kiállítás")
+    else:
+        print("Forduljon a pénztárhoz!")

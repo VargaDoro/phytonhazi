@@ -1,12 +1,12 @@
 import metodusok
 
-#metodusok.elso()
-#metodusok.masodik(6)
-#metodusok.harom("hétfő", "hittan")
-#metodusok.negy()
-#metodusok.ot()
+'''metodusok.elso()
+metodusok.masodik(6)
+metodusok.harom("hétfő", "hittan")
+metodusok.negy()
+metodusok.ot()
 
-'''lista=metodusok.hat()
+lista=metodusok.hat()
 print("A lista tartalma: ", lista)
 
 db:int=metodusok.hat_pozitiv(lista)
@@ -42,7 +42,21 @@ a_betu=metodusok.het_a(tarolas)
 print(a_betu)
 
 leghosszabb=metodusok.het_leghosszabb(tarolas)
-print(f"A leghosszabb név: {leghosszabb}")'''
+print(f"A leghosszabb név: {leghosszabb}")
 
 tarolas=metodusok.nyolc()
 print(f"A dobások: {tarolas}")
+
+db=metodusok.nyolc_f(tarolas)
+print("Ennyi 'f' betű van :",db)
+
+leghosszabb_f=metodusok.nyolc_leghosszabb(tarolas)
+print("A leghosszabb 'f' sorozat: ",leghosszabb_f)
+
+metodusok.kilenc()
+metodusok.tiz(5678)
+metodusok.tizenegy(123)
+metodusok.tizenketto()
+metodusok.tizenharom()
+metodusok.tizennegy(8, 6)'''
+metodusok.tizenot("k")
